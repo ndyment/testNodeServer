@@ -21,9 +21,12 @@ NewCustomer.isLoyal = 0;
 NewCustomer.waletID = "init";
 */
 var newCustomer = new Customer();
+var loyaltyText = "sample loyalty text"; //init the loyalty text
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
 var port = process.env.PORT || 8080;       
 
@@ -82,7 +85,17 @@ router.route('/customers')
         });
     });
 	
-	
+//setup the webserver
+app.get('/', function (req, res){
+
+    // use RENDER instead of SENDFILE
+	if (1==customer.isLoyal){
+		loyaltyText = "Welcome back, " + customer.name + ". We appreciate your loyalty!";
+	}else{
+		loyaltyText = "Hi, " + customer.name + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+	}
+    res.render('./Homepage.html', {name: customer.name, text: loyaltyText});
+  });
 	
 	
 
