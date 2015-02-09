@@ -15,12 +15,20 @@ mongoose.connect('mongodb://tj:nopass@ds031691.mongolab.com:31691/testdb1');
 /*
 var NewCustomer = new Object();
 //probably don't need this - but I'm old school
-NewCustomer.firstName = "init";
-NewCustomer.lastName = "init";
-NewCustomer.isLoyal = 0;
-NewCustomer.waletID = "init";
+newCustomer.firstName = "init";
+newCustomer.lastName = "init";
+newCustomer.isLoyal = 0;
+newCustomer.waletID = "init";
 */
 var newCustomer = new Customer();
+//add some stuff incase the website launches before we get a customer
+//i'm sure there's a better way to do this
+newCustomer.firstName = "init";
+newCustomer.lastName = "init";
+newCustomer.isLoyal = 0;
+newCustomer.waletID = "init";
+
+
 var loyaltyText = "sample loyalty text"; //init the loyalty text
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -89,12 +97,12 @@ router.route('/customers')
 app.get('/', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (1==customer.isLoyal){
-		loyaltyText = "Welcome back, " + customer.name + ". We appreciate your loyalty!";
+	if (1==newCustomer.isLoyal){
+		loyaltyText = "Welcome back, " + newCustomer.name + ". We appreciate your loyalty!";
 	}else{
-		loyaltyText = "Hi, " + customer.name + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		loyaltyText = "Hi, " + newCustomer.name + ". Would you like to sign-up for our loyalty program? Click here to sign up";
 	}
-    res.render('./Homepage.html', {name: customer.name, text: loyaltyText});
+    res.render('./Homepage.html', {name: newCustomer.name, text: loyaltyText});
   });
 	
 	
