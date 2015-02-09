@@ -98,11 +98,11 @@ app.get('/', function (req, res){
 
     // use RENDER instead of SENDFILE
 	if (1==newCustomer.isLoyal){
-		loyaltyText = "Welcome back, " + newCustomer.name + ". We appreciate your loyalty!";
+		loyaltyText = "Welcome back, " + newCustomer.firstName + ". We appreciate your loyalty!";
 	}else{
-		loyaltyText = "Hi, " + newCustomer.name + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		loyaltyText = "Hi, " + newCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
 	}
-    res.render('./Homepage.html', {name: newCustomer.name, text: loyaltyText});
+    res.render('./Homepage.html', {name: newCustomer.firstName, text: loyaltyText});
   });
 	
 	
