@@ -72,6 +72,7 @@ router.route('/customers')
 		newCustomer.lastName = req.body.lastName; 
 		newCustomer.walletID = req.body.walletID; 
 		newCustomer.isLoyal = req.body.isLoyal;
+		newCustomer.storeName = req.body.storeName;
 		console.log("Hello " + newCustomer.firstName + ". And welcome");
 		
 		//write to mongoDB

@@ -5,7 +5,8 @@ var CustomerSchema  = new Schema({
     firstName: String,
 	lastName: String,
 	isLoyal: Boolean,
-	walletID: String
+	walletID: String,
+	storeName : String
 });
 
 module.exports = mongoose.model('Customer', CustomerSchema);
