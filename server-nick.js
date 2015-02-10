@@ -8,8 +8,6 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var Customer = require('./app/models/customer');
-var Offer    = require('./app/models/offers');
-
 
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://tj:nopass@ds031691.mongolab.com:31691/testdb1'); 
@@ -72,7 +70,6 @@ router.route('/customers')
 		newCustomer.lastName = req.body.lastName; 
 		newCustomer.walletID = req.body.walletID; 
 		newCustomer.isLoyal = req.body.isLoyal;
-		newCustomer.storeName = req.body.storeName;
 		console.log("Hello " + newCustomer.firstName + ". And welcome");
 		
 		//write to mongoDB
@@ -145,8 +142,6 @@ app.get('/sobeys', function (req, res){
 	}
     res.render('./sobeys.html', {name: newCustomer.firstName, text: loyaltyText});
   });
-	
-	
 	
 
 
