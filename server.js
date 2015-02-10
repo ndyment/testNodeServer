@@ -8,6 +8,8 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var Customer = require('./app/models/customer');
+var Offer    = require('./app/models/offers');
+
 
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://tj:nopass@ds031691.mongolab.com:31691/testdb1'); 
