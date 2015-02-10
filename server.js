@@ -35,6 +35,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
+// make express look in the public directory for assets (css/js/img)
+app.use(express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 8080;       
 
@@ -102,7 +104,7 @@ app.get('/', function (req, res){
 	}else{
 		loyaltyText = "Hi, " + newCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
 	}
-    res.render('./Homepage.html', {name: newCustomer.firstName, text: loyaltyText});
+    res.render('./index.html', {name: newCustomer.firstName, text: loyaltyText});
   });
 	
 	
