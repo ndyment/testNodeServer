@@ -266,3 +266,15 @@ nav a:hover{
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+body{background:#fff;color:#000;font-family:'Crete Round',Helvetica,Arial,sans-serif;font-size:10px;font-size:1.0rem;line-height:1.71429;}p,h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6,ul,ol,li,dl{clear:none;margin-bottom:1.71429em;font-family:'Crete Round',Helvetica,Arial,sans-serif;}a:link,a:visited{color:#2a8a15;font-weight:bold;text-decoration:none;}a:link{-webkit-tap-highlight-color:transparent;}a:hover,a:focus,a:active{color:#fff;background-color:#2a8a15;}
+
+button,input,select,textarea{margin:0;
+padding:4px 6px;border:2px solid #edeeee;border-radius:0;background:#edeeee;color:#000;font-family:Lato,Helvetica,Arial,sans-serif;font-size:1.142857em;
+vertical-align:baseline;}
+
+.nav strong {
+font-size: 1em;
+line-height: 1.136364;
+text-transform: uppercase;
+font-family: 'Crete Round', serif;
+}
