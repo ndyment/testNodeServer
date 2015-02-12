@@ -134,6 +134,13 @@ app.get('/', function (req, res){
 	console.log(latestShoppersCustomer);
 	console.log("Sobeys");
 	console.log(latestSobeysCustomer);
+	
+	//reset variables
+	latestSobeysCustomer = new Object();
+	latestStarbucksCustomer = new Object();
+	latestShoppersCustomer = new Object();
+
+
     // use RENDER instead of SENDFILE
 	if (1==newCustomer.isLoyal){
 		loyaltyText = "Welcome back, " + newCustomer.firstName + ". We appreciate your loyalty!";
