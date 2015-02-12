@@ -47,11 +47,6 @@ var port = process.env.PORT || 8080;
 // =============================================================================
 var router = express.Router();          
 
-//Customers
-var latestSobeysCustomer = new Customer();
-var latestStarbucksCustomer = new Customer();
-var latestShoppersCustomer = new Customer();
-
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -95,15 +90,21 @@ router.route('/customers')
 		//set customer in context of the store
 		if (newCustomer.storeName == "Sobeys") {
 			console.log("Customer is at Sobeys");
-			latestSobeysCustomer = newCustomer;
+			var latestSobeysCustomer = new Object();
+			latestSobeysCustomer.firstName = newCustomer.firstName;
+			latestSobeysCustomer.isLoyal = newCustomer.isLoyal;
 
 		} else if (newCustomer.storeName == "Starbucks") {
 			console.log("Customer is at Starbucks");
-			latestStarbucksCustomer == newCustomer;
+			var latestStarbucksCustomer = new Customer();
+			latestStarbucksCustomer.firstName = newCustomer.firstName;
+			latestStarbucksCustomer.isLoyal = newCustomer.isLoyal;
 
 		} else if (newCustomer.storeName == "Shoppers"){
 			console.log("Customer is at Shoppers");
-			latestShoppersCustomer == newCustomer;
+			var latestShoppersCustomer = new Customer();
+			latestShoppersCustomer.firstName = newCustomer.firstName;
+			latestShoppersCustomer.isLoyal = newCustomer.isLoyal;
 		} else {
 			console.log("Store not found - "+newCustomer.storeName+" was detected.");
 		}
