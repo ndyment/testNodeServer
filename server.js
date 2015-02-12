@@ -143,36 +143,49 @@ app.get('/', function (req, res){
 app.get('/starbucks', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (1==latestStarbucksCustomer.isLoyal){
-		loyaltyText = "Welcome back, " + latestStarbucksCustomer.firstName + ". We appreciate your loyalty!";
+	if (latestStarbucksCustomer){
+		
+		if (1==latestStarbucksCustomer.isLoyal){
+			loyaltyText = "Welcome back, " + latestStarbucksCustomer.firstName + ". We appreciate your loyalty!";
+		}else{
+			loyaltyText = "Hi, " + latestStarbucksCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		}
+		res.render('./starbucks.html', {name: latestStarbucksCustomer.firstName, text: loyaltyText});
 	}else{
-		loyaltyText = "Hi, " + latestStarbucksCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		res.render('./starbucks.html', {name: "Nobody", text: "Turn on your bluetooth so we can talk!"});
 	}
-    res.render('./starbucks.html', {name: latestStarbucksCustomer.firstName, text: loyaltyText});
   });
 	
 //setup shoppers
 app.get('/shoppers', function (req, res){
-
+	
     // use RENDER instead of SENDFILE
-	if (1==latestShoppersCustomer.isLoyal){
-		loyaltyText = "Welcome back, " + latestShoppersCustomer.firstName + ". We appreciate your loyalty!";
+	if (latestShoppersCustomer){
+		if (1==latestShoppersCustomer.isLoyal){
+			loyaltyText = "Welcome back, " + latestShoppersCustomer.firstName + ". We appreciate your loyalty!";
+		}else{
+			loyaltyText = "Hi, " + latestShoppersCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		}
+		res.render('./shoppers.html', {name: latestShoppersCustomer.firstName, text: loyaltyText});
 	}else{
-		loyaltyText = "Hi, " + latestShoppersCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		res.render('./shoppers.html', {name: "Nobody", text: "Turn on your bluetooth so we can talk!"});
 	}
-    res.render('./shoppers.html', {name: latestShoppersCustomer.firstName, text: loyaltyText});
   });
 
 //setup sobeys  
 app.get('/sobeys', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (1==latestSobeysCustomer.isLoyal){
-		loyaltyText = "Welcome back, " + latestSobeysCustomer.firstName + ". We appreciate your loyalty!";
+	if (latestSobeysCustomer){
+		if (1==latestSobeysCustomer.isLoyal){
+			loyaltyText = "Welcome back, " + latestSobeysCustomer.firstName + ". We appreciate your loyalty!";
+		}else{
+			loyaltyText = "Hi, " + latestSobeysCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		}
+		res.render('./sobeys.html', {name: latestSobeysCustomer.firstName, text: loyaltyText});
 	}else{
-		loyaltyText = "Hi, " + latestSobeysCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		res.render('./sobeys.html', {name: "Nobody", text: "Turn on your bluetooth so we can talk!"});
 	}
-    res.render('./sobeys.html', {name: latestSobeysCustomer.firstName, text: loyaltyText});
   });
 	
 	
