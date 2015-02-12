@@ -94,10 +94,15 @@ router.route('/customers')
 		
 		//set customer in context of the store
 		if (newCustomer.storeName == "Sobeys") {
+			console.log("Customer is at Sobeys");
 			latestSobeysCustomer = newCustomer;
+
 		} else if (newCustomer.storeName == "Starbucks") {
+			console.log("Customer is at Starbucks");
 			latestStarbucksCustomer == newCustomer;
+
 		} else if (newCustomer.storeName == "Shoppers"){
+			console.log("Customer is at Shoppers");
 			latestShoppersCustomer == newCustomer;
 		} else {
 			console.log("Store not found - "+newCustomer.storeName+" was detected.");
@@ -117,7 +122,13 @@ router.route('/customers')
 	
 //setup the webserver
 app.get('/', function (req, res){
-
+	//debug on base URL
+	console.log("Starbucks");
+	console.log(latestStarbucksCustomer);
+	console.log("Shoppers");
+	console.log(latestShoppersCustomer);
+	console.log("Sobeys");
+	console.log(latestSobeysCustomer);
     // use RENDER instead of SENDFILE
 	if (1==newCustomer.isLoyal){
 		loyaltyText = "Welcome back, " + newCustomer.firstName + ". We appreciate your loyalty!";
