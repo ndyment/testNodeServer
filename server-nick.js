@@ -1,6 +1,6 @@
 // server.js
 
-// BASE SETUP
+// BASE SETUPte
 // =============================================================================
 
 // call the packages we need
