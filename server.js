@@ -29,6 +29,7 @@ newCustomer.firstName = "init";
 newCustomer.lastName = "init";
 newCustomer.isLoyal = 0;
 newCustomer.waletID = "init";
+newCustomer.storeName = "Sobeys"; //Sobeys, Starbucks, Shoppers
 
 
 var loyaltyText = "sample loyalty text"; //init the loyalty text
@@ -45,6 +46,11 @@ var port = process.env.PORT || 8080;
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router();          
+
+//Customers
+var latestSobeysCustomer = new Customer();
+var latestStarbucksCustomer = new Customer();
+var latestShoppersCustomer = new Customer();
 
 
 // middleware to use for all requests
@@ -85,6 +91,17 @@ router.route('/customers')
 			console.log('Customer ' + newCustomer.firstName + ' created!');
             res.json({ message: 'Customer created!' });
         });        
+		
+		//set customer in context of the store
+		if (newCustomer.storeName == "Sobeys") {
+			latestSobeysCustomer = newCustomer;
+		} else if (newCustomer.storeName == "Starbucks") {
+			latestStarbucksCustomer == newCustomer;
+		} else if (newCustomer.storeName == "Shoppers"){
+			latestShoppersCustomer == newCustomer;
+		} else {
+			console.log("Store not found - "+newCustomer.storeName+" was detected.");
+		}
     })
 	
 	.get(function(req, res) {
@@ -114,36 +131,36 @@ app.get('/', function (req, res){
 app.get('/starbucks', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (1==newCustomer.isLoyal){
-		loyaltyText = "Welcome back, " + newCustomer.firstName + ". We appreciate your loyalty!";
+	if (1==latestStarbucksCustomer.isLoyal){
+		loyaltyText = "Welcome back, " + latestStarbucksCustomer.firstName + ". We appreciate your loyalty!";
 	}else{
-		loyaltyText = "Hi, " + newCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		loyaltyText = "Hi, " + latestStarbucksCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
 	}
-    res.render('./starbucks.html', {name: newCustomer.firstName, text: loyaltyText});
+    res.render('./starbucks.html', {name: latestStarbucksCustomer.firstName, text: loyaltyText});
   });
 	
 //setup shoppers
 app.get('/shoppers', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (1==newCustomer.isLoyal){
-		loyaltyText = "Welcome back, " + newCustomer.firstName + ". We appreciate your loyalty!";
+	if (1==latestShoppersCustomer.isLoyal){
+		loyaltyText = "Welcome back, " + latestShoppersCustomer.firstName + ". We appreciate your loyalty!";
 	}else{
-		loyaltyText = "Hi, " + newCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		loyaltyText = "Hi, " + latestShoppersCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
 	}
-    res.render('./shoppers.html', {name: newCustomer.firstName, text: loyaltyText});
+    res.render('./shoppers.html', {name: latestShoppersCustomer.firstName, text: loyaltyText});
   });
 
 //setup sobeys  
 app.get('/sobeys', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (1==newCustomer.isLoyal){
-		loyaltyText = "Welcome back, " + newCustomer.firstName + ". We appreciate your loyalty!";
+	if (1==latestSobeysCustomer.isLoyal){
+		loyaltyText = "Welcome back, " + latestSobeysCustomer.firstName + ". We appreciate your loyalty!";
 	}else{
-		loyaltyText = "Hi, " + newCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		loyaltyText = "Hi, " + latestSobeysCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
 	}
-    res.render('./sobeys.html', {name: newCustomer.firstName, text: loyaltyText});
+    res.render('./sobeys.html', {name: latestSobeysCustomer.firstName, text: loyaltyText});
   });
 	
 	
