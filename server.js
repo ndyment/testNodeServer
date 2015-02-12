@@ -198,6 +198,12 @@ app.get('/sobeys', function (req, res){
 		res.render('./sobeys.html', {name: "Nobody", text: "Turn on your bluetooth so we can talk!"});
 	}
   });
+  
+//add test for autoloading body
+
+app.get('/shoppers-body', function (req, res){
+	res.render('./shoppers-body.ejs');
+  });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
