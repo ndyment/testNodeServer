@@ -31,6 +31,10 @@ newCustomer.isLoyal = 0;
 newCustomer.waletID = "init";
 newCustomer.storeName = "Sobeys"; //Sobeys, Starbucks, Shoppers
 
+//create store objects
+var latestSobeysCustomer = new Object();
+var latestStarbucksCustomer = new Object();
+var latestShoppersCustomer = new Object();
 
 var loyaltyText = "sample loyalty text"; //init the loyalty text
 
@@ -90,19 +94,19 @@ router.route('/customers')
 		//set customer in context of the store
 		if (newCustomer.storeName == "Sobeys") {
 			console.log("Customer is at Sobeys");
-			var latestSobeysCustomer = new Object();
+			
 			latestSobeysCustomer.firstName = newCustomer.firstName;
 			latestSobeysCustomer.isLoyal = newCustomer.isLoyal;
 
 		} else if (newCustomer.storeName == "Starbucks") {
 			console.log("Customer is at Starbucks");
-			var latestStarbucksCustomer = new Customer();
+			
 			latestStarbucksCustomer.firstName = newCustomer.firstName;
 			latestStarbucksCustomer.isLoyal = newCustomer.isLoyal;
 
 		} else if (newCustomer.storeName == "Shoppers"){
 			console.log("Customer is at Shoppers");
-			var latestShoppersCustomer = new Customer();
+			
 			latestShoppersCustomer.firstName = newCustomer.firstName;
 			latestShoppersCustomer.isLoyal = newCustomer.isLoyal;
 		} else {
@@ -143,7 +147,7 @@ app.get('/', function (req, res){
 app.get('/starbucks', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (latestStarbucksCustomer){
+	if (latestStarbucksCustomer.firstName){
 		
 		if (1==latestStarbucksCustomer.isLoyal){
 			loyaltyText = "Welcome back, " + latestStarbucksCustomer.firstName + ". We appreciate your loyalty!";
@@ -160,7 +164,7 @@ app.get('/starbucks', function (req, res){
 app.get('/shoppers', function (req, res){
 	
     // use RENDER instead of SENDFILE
-	if (latestShoppersCustomer){
+	if (latestShoppersCustomer.firstName){
 		if (1==latestShoppersCustomer.isLoyal){
 			loyaltyText = "Welcome back, " + latestShoppersCustomer.firstName + ". We appreciate your loyalty!";
 		}else{
@@ -176,7 +180,7 @@ app.get('/shoppers', function (req, res){
 app.get('/sobeys', function (req, res){
 
     // use RENDER instead of SENDFILE
-	if (latestSobeysCustomer){
+	if (latestSobeysCustomer.firstName){
 		if (1==latestSobeysCustomer.isLoyal){
 			loyaltyText = "Welcome back, " + latestSobeysCustomer.firstName + ". We appreciate your loyalty!";
 		}else{
@@ -187,11 +191,6 @@ app.get('/sobeys', function (req, res){
 		res.render('./sobeys.html', {name: "Nobody", text: "Turn on your bluetooth so we can talk!"});
 	}
   });
-	
-	
-	
-
-
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
