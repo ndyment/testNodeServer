@@ -115,16 +115,17 @@ router.route('/customers')
     })
 	
 	.get(function(req, res) {
+	    var storename = req.param('storename')
 		console.log('Get2');
 		console.log(req.body);
-        Offer.find(function(err, offers) {
+        Offer.find({offer:storename},function(err, offers) {
             if (err)
                 res.send(err);
 
             res.json(offers);
         });
     });
-	
+    
 //setup the webserver
 app.get('/', function (req, res){
 	//debug on base URL
