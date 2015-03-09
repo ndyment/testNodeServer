@@ -122,7 +122,7 @@ router.route('/customers')
 	            if (err)
 	                res.send(err);
 		    else Offer.foreach(function(Storename) {
-			res.json(Storename);
+			res.json({ message: 'hooray! welcome to our api!' });
 			
 			
 				
