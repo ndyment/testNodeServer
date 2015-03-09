@@ -121,13 +121,9 @@ router.route('/customers')
         	Offer.find({offer:storename},function(err, offers) {
 	            if (err)
 	                res.send(err);
-		    else Offer.foreach(function(Storename) {
-			res.json({ message: 'hooray! welcome to our api!' });
-			
-			
-				
-				//res.json(offers);
-	        	});
+					
+			res.json(offers);
+		  
 		});
     });
     
