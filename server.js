@@ -118,12 +118,17 @@ router.route('/customers')
 	    var storename = req.param('storename')
 		console.log('Get2');
 		console.log(req.body);
-        Offer.find({offer:storename},function(err, offers) {
-            if (err)
-                res.send(err);
-
-            res.json(offers);
-        });
+        	Offer.find({offer:storename},function(err, offers) {
+	            if (err)
+	                res.send(err);
+		    else Offer.foreach(function(Storename) {
+			res.json(Storename);
+			
+			
+				
+				//res.json(offers);
+	        	});
+		});
     });
     
 //setup the webserver
