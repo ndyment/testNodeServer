@@ -206,6 +206,10 @@ app.get('/sobeys', function (req, res){
 app.get('/shoppers-body', function (req, res){
 	res.render('./shoppers-body.ejs');
   });
+  
+  app.get('/starbucks-body', function (req, res){
+	res.render('./starbucks-body.ejs');
+  });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
