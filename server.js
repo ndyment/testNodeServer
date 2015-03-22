@@ -207,7 +207,7 @@ app.get('/shoppers-body', function (req, res){
 	res.render('./shoppers-body.ejs');
   });
   
-  app.get('/starbucks-body', function (req, res){
+  app.get('./starbucks-body', function (req, res){
 	res.render('./starbucks-body.ejs');
   });
 
