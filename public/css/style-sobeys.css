@@ -8,8 +8,8 @@ audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
 html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-body { margin: 0; font-size: 13px; line-height: 1.231; background-color: #E7E7E7}
-body, button, input, select, textarea { font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; color: #222; }
+body { margin: 0; font-size: 13px; line-height: 1.231; }
+body, button, input, select, textarea { font-family: 'Crete Round'; color: #222; }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
@@ -87,7 +87,7 @@ body{ font:16px/24px Helvetica, Helvetica Neue, Arial, sans-serif; }
 #header-container,
 #footer-container,
 #main aside{
-	background:#2F2F2F;
+	background:#44A13F;
 }
 /*
 #main article{
@@ -109,7 +109,7 @@ nav a{
 	margin-bottom:10px;
 	padding:15px 0;
 
-	background:#2F2F2F;
+	background:#44A13F;
 	color:white;
 
 	text-align:center;

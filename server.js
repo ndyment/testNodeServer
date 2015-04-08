@@ -97,7 +97,7 @@ router.route('/customers')
 			
 			latestSobeysCustomer.firstName = newCustomer.firstName;
 			latestSobeysCustomer.isLoyal = newCustomer.isLoyal;
-
+			
 		} else if (newCustomer.storeName == "Starbucks") {
 			console.log("Customer is at Starbucks");
 			
@@ -198,6 +198,27 @@ app.get('/sobeys', function (req, res){
 		res.render('./sobeys.html', {name: latestSobeysCustomer.firstName, text: loyaltyText});
 	}else{
 		res.render('./sobeys.html', {name: "Nobody", text: "Turn on your bluetooth so we can talk!"});
+	}
+  });
+  
+//setup loblaws  
+// NOTE - THIS IS A HACK FOR THE DEMO, and LOBLAWS IS LEVERAGING THE SOBEYS CARD WITH NEW ART FOR THE DEMO
+
+
+
+app.get('/loblaws', function (req, res){
+
+    // use RENDER instead of SENDFILE
+	if (latestSobeysCustomer.firstName){
+		if (1==latestSobeysCustomer.isLoyal){
+			loyaltyText = "Welcome back, " + latestSobeysCustomer.firstName + ". We appreciate your loyalty!";
+		}else{
+			loyaltyText = "Hi, " + latestSobeysCustomer.firstName + ". Would you like to sign-up for our loyalty program? Click here to sign up";
+		}
+		var introtext = "Welcome to Loblaws, "+latestSobeysCustomer.firstName;
+		res.render('./loblaws.html', {name: introtext, text: loyaltyText});
+	}else{
+		res.render('./loblaws.html', {name: "Welcome to UGO interactive!", text: "Turn on your bluetooth so we can talk!"});
 	}
   });
   
